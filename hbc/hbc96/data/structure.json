@@ -1,0 +1,77 @@
+{
+    "header": {
+        "magic": ["uint", 64, 1],
+        "version": ["uint", 32, 1],
+        "sourceHash": ["bytes", 20],
+        "fileLength": ["uint", 32, 1],
+        "globalCodeIndex": ["uint", 32, 1],
+        "functionCount": ["uint", 32, 1],
+        "stringKindCount": ["uint", 32, 1],
+        "identifierCount": ["uint", 32, 1],
+        "stringCount": ["uint", 32, 1],
+        "overflowStringCount": ["uint", 32, 1],
+        "stringStorageSize": ["uint", 32, 1],
+        "bigIntCount": ["uint", 32, 1],
+        "bigIntStorageSize": ["uint", 32, 1],
+        "regExpCount": ["uint", 32, 1],
+        "regExpStorageSize": ["uint", 32, 1],
+        "arrayBufferSize": ["uint", 32, 1],
+        "objKeyBufferSize": ["uint", 32, 1],
+        "objValueBufferSize": ["uint", 32, 1],
+        "segmentID": ["uint", 32, 1],
+        "cjsModuleCount": ["uint", 32, 1],
+        "functionSourceCount": ["uint", 32, 1],
+        "debugInfoOffset": ["uint", 32, 1],
+        "options": ["uint", 8, 1],
+        "padding": ["bytes", 19]
+    },
+    "SmallFuncHeader": {
+    "offset": ["uint", 25, 1],
+    "paramCount": ["uint", 7, 1],
+    "bytecodeSizeInBytes": ["uint", 15, 1],
+    "functionName": ["uint", 17, 1],
+    "infoOffset": ["uint", 25, 1],
+    "frameSize": ["uint", 7, 1],
+    "environmentSize": ["uint", 8, 1],
+    "highestReadCacheIndex": ["uint", 8, 1],
+    "highestWriteCacheIndex": ["uint", 8, 1],
+    "flags": ["uint", 8, 1]
+     },
+    "FuncHeader": {
+    "offset": ["uint", 32, 1],
+    "paramCount": ["uint", 32, 1],
+    "bytecodeSizeInBytes": ["uint", 32, 1],
+    "functionName": ["uint", 32, 1],
+    "infoOffset": ["uint", 32, 1],
+    "frameSize": ["uint", 32, 1],
+    "environmentSize": ["uint", 32, 1],
+    "highestReadCacheIndex": ["uint", 8, 1],
+    "highestWriteCacheIndex": ["uint", 8, 1],
+    "flags": ["uint", 8, 1]
+      },
+    "SmallStringTableEntry": {
+        "isUTF16": ["uint", 1 ,1],
+        "offset": ["uint", 23,1],
+        "length": ["uint", 8,1]
+    },
+    "OverflowStringTableEntry": {
+        "offset": ["uint", 32,1],
+        "length": ["uint", 32,1]
+    },
+    "StringStorage": ["bytes", 8, 1],
+    "ArrayBuffer": ["bytes", 8, 1],
+    "ObjKeyBuffer": ["bytes", 8, 1],
+    "ObjValueBuffer": ["bytes", 8, 1],
+    "BigIntTableEntry": {},
+    "BigIntStorage": ["bytes", 8, 1],
+    "RegExpTableEntry": {
+        "offset": ["uint", 32,1],
+        "length": ["uint", 32,1]
+    },
+    "RegExpStorage": ["bytes", 8, 1],
+    "CJSModuleTable": {
+        "first": ["uint", 32,1],
+        "second": ["uint", 32,1]
+    },
+    "FunctionSourceTableEntry": {}
+}
