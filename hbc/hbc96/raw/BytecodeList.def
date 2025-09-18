@@ -544,7 +544,7 @@ DEFINE_OPCODE_0(AsyncBreakCheck)
 /// Arg1 is the function local profile point index. The first one will have the
 /// largest index. If there are more than 2^16 profile points in the function,
 /// all the overflowed profile points have index zero.
-
+DEFINE_OPCODE_1(ProfilePoint, UInt16)
 
 /// Create a closure.
 /// Arg1 is the register in which to store the closure.
@@ -814,6 +814,7 @@ DEFINE_JUMP_3(JNotEqual)
 DEFINE_JUMP_3(JStrictEqual)
 DEFINE_JUMP_3(JStrictNotEqual)
 
+#ifdef HERMES_RUN_WASM
 /// Arg1 = Arg2 + Arg3 (32-bit integer addition)
 DEFINE_OPCODE_3(Add32, Reg8, Reg8, Reg8)
 /// Arg1 = Arg2 - Arg3 (32-bit integer subtraction)
@@ -844,6 +845,7 @@ DEFINE_OPCODE_3(Store8, Reg8, Reg8, Reg8)
 DEFINE_OPCODE_3(Store16, Reg8, Reg8, Reg8)
 /// HEAP32[Arg2] = Arg3 (store signed or unsigned 32-bit integer)
 DEFINE_OPCODE_3(Store32, Reg8, Reg8, Reg8)
+#endif
 
 // Implementations can rely on the following pairs of instructions having the
 // same number and type of operands.
