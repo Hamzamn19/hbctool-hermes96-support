@@ -110,11 +110,23 @@ class HBC96:
             offset = stringTableOverflowEntry["offset"]
             length = stringTableOverflowEntry["length"]
 
-        if isUTF16:
-            length*=2
+        byte_length = length * 2 if isUTF16 else length
 
-        s = bytes(stringStorage[offset:offset + length])
-        return s.hex() if isUTF16 else s.decode("utf-8"), (isUTF16, offset, length)
+        if offset + byte_length > len(stringStorage):
+            byte_length = len(stringStorage) - offset
+
+        s_bytes = bytes(stringStorage[offset : offset + byte_length])
+
+        if isUTF16:
+            return s_bytes.hex(), (isUTF16, offset, byte_length)
+        else:
+            try:
+                # The final, working logic
+                final_string = "".join([chr(b) for b in s_bytes])
+            except ValueError:
+                final_string = repr(s_bytes)
+
+        return final_string, (isUTF16, offset, byte_length)
     
     def setString(self, sid, val):
         assert sid >= 0 and sid < self.getStringCount(), "Invalid string ID"
